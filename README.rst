@@ -1,7 +1,3 @@
-.. Forge documentation master file, created by
-   sphinx-quickstart on Tue Mar 29 14:24:40 2011.
-   You can adapt this file completely to your liking, but it should at  least contain the root `toctree` directive.
-
 Forge - Object forging for unit tests
 =====================================
 
@@ -29,7 +25,7 @@ To keep things organized, I recommend creating a ``test/factories`` directory wh
 Defining Factories
 ++++++++++++++++++
 
-We'll use the ``user.py`` factory from above for example. There are two ways to define a factory. The first is just a normal method call to :func:`forge.Forge.define`:
+We'll use the ``user.py`` factory from above for example. There are two ways to define a factory. The first is just a normal method call to ``Forge.define``:
 ::
     # project/test/factories/user.py
     
@@ -54,7 +50,7 @@ My suggestion is to use the normal syntax when defining a small factory. Essenti
 Building Forged Objects
 +++++++++++++++++++++++
 
-Building factory objects is easy; just call :func:`forge.Forge.build` with the factory name.
+Building factory objects is easy; just call ``Forge.build`` with the factory name.
 ::
     user = Forge.build('user')
 
