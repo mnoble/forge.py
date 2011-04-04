@@ -113,6 +113,10 @@ class Forge(object):
             Forge._registry[self.name] = self.factory.__dict__
     
     @classmethod
+    def attributes_for(self, _name):
+        return Forge._registry[_name]
+    
+    @classmethod
     def build(cls, _name, **kwargs):
         """Same as :func:`forge.Forge.__new__`"""
         return Forge(_name, **kwargs)

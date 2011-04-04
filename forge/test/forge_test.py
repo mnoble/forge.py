@@ -54,3 +54,7 @@ class ForgeTest(TestCase):
     def should_support_shorhand_building_with_attributes(self):
         user = Forge('user', name='Wayne')
         assert user.name == 'Wayne'
+        
+    def should_give_a_dict_of_attributes_for_a_factory(self):
+        user = Forge.attributes_for('user')
+        assert user == dict(name="Matte", age=25)
