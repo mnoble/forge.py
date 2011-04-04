@@ -59,6 +59,15 @@ You can also use the shorthand version:
     user = Forge('user')
 
 
+Getting a Dictionary of Factory Attributes
+++++++++++++++++++++++++++++++++++++++++++
+
+If all you want is the raw ``dict`` of attributes for a particular factory, use ``Forge.attributes_for``.
+::
+    Forge.attributes_for('user')
+    #=> {'name': 'Guy', 'age': 25, 'login': 'personguy', ... }
+
+
 Associations
 ++++++++++++
 
