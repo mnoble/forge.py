@@ -12,6 +12,11 @@ class DuplicateFactoryError(Exception):
         return "Cannot define two factories with the same name."
 
 
+class ForgeModelError(Exception):
+    def __str__(self):
+        return "No model module specified. Use Forge.configure to do so."
+
+
 class Forge(object):
     """Factory based object forger."""
     
@@ -47,17 +52,11 @@ class Forge(object):
             klass = getattr(Forge._models, _name.capitalize())
             return klass(**factory)
         else:
-            return OpenStruct(**factory)
+            raise ForgeModelError
     
     @classmethod
     def configure(cls, models=None):
         """Configure Forge to use model classes when building.
-        
-        If you're using an ORM like SQLAlchemy you can have Forge
-        use your actual models when creating factories. One gotcha
-        with this is that when you :func:`forge.Forge.define` your 
-        factories, you can only define attributes that are columns in 
-        your model.
         
         Within the module you configure here, classes should be
         available to import. This means that if you have a models

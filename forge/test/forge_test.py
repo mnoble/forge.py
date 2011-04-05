@@ -1,12 +1,13 @@
 from unittest2 import TestCase
 
 import forge.test.factories
-from forge import Forge, DuplicateFactoryError
+from forge import Forge, DuplicateFactoryError, ForgeModelError
 
 
 class ForgeTest(TestCase):
     def setUp(self):
-        Forge.configure(models=None)
+        Forge.configure(models='forge.test.support.models')
+        
         if 'user' not in Forge._registry:
             Forge.define('user', name='Matte', age=25)
     
@@ -58,3 +59,9 @@ class ForgeTest(TestCase):
     def should_give_a_dict_of_attributes_for_a_factory(self):
         user = Forge.attributes_for('user')
         assert user == dict(name="Matte", age=25)
+    
+    def should_raise_error_without_models_configured(self):
+        Forge.configure(models=None)
+        with self.assertRaises(ForgeModelError):
+            Forge.build('user')
+
