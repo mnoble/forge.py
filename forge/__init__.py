@@ -93,7 +93,7 @@ class Forge(object):
             Forge.define('user', name='Frankenstein')
             
             # Forge.define using `with`
-            with Forge.generate('user') as f:
+            with Forge.define('user') as f:
                 f.name = 'Frankenstein'
         """
         def __init__(self, _name, **kwargs):
